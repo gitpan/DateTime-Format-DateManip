@@ -4,7 +4,7 @@ use strict;
 
 use vars qw ($VERSION);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 use Carp;
 
@@ -46,7 +46,7 @@ sub parse_datetime {
     return $dt;
 }
 
-# Takes a DateTime object and returns the correspinding Date::Manip string (in 
+# Takes a DateTime object and returns the corresponding Date::Manip string (in 
 # the format returned by ParseDate)
 sub format_datetime {
     my ($class, $dt) = @_;
@@ -54,7 +54,7 @@ sub format_datetime {
 
     # Note that we just use the TZ offset since Date::Manip doesn't
     # store time zone information with the dates but sets it system wide
-    return ParseDate( $dt->strftime("%{datetime} %z") );
+    return ParseDate( $dt->strftime("%Y-%m-%dT%H:%M:%S %z") );
 }
 
 # Takes a Date::Manip Delta string and returns the corresponding
@@ -310,7 +310,7 @@ offset to set up the C<DateTime> object.  However, we try to work out
 what the matching timezone is using the C<DateTime> nomenclature and
 create the object in the correct time zone so the date is correct if
 dajustments to the date object pushes it over a DST change.  Note that
-we call C<set_time_zone) to make the change, so the absolute time is
+we call C<set_time_zone> to make the change, so the absolute time is
 not affected by the time zone change.
 
 However, not all C<Date::Manip> time zones have reasonable mappings
@@ -353,6 +353,7 @@ then undef will be returned.
 This method takes the given C<DateTime::Duration> object and returns a
 corresponding C<Date::Manip::ParseDateDelta> parseable string.
 
+=back
 
 =head1 AUTHOR
 
