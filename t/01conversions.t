@@ -9,9 +9,13 @@ use Date::Manip;
 
 my $dfdm = "DateTime::Format::DateManip";
 
-# Set the timezone for Date::Manip and DateTime
-$ENV{TZ}  = "EST";
+## Set the timezone for Date::Manip and DateTime
+my $dm_tz = "EZT";
 my $dt_tz = "US/Eastern";
+
+# Setup Date::Manip manually so we can force the TZ to beat a config
+# file setting
+Date_Init("TZ=$dm_tz");
 
 ## Date::Manip to DateTime
 my @dm_to_dt_tests = 
