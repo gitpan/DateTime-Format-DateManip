@@ -10,7 +10,7 @@ use Date::Manip;
 my $dfdm = "DateTime::Format::DateManip";
 
 ## Set the timezone for Date::Manip and DateTime
-my $dm_tz = "EZT";
+my $dm_tz = "EST";
 my $dt_tz = "US/Eastern";
 
 # Setup Date::Manip manually so we can force the TZ to beat a config
